@@ -6,19 +6,19 @@
 
 ## Start all of the services locally
 start:
-	docker-compose --file services/docker-compose.yaml up --build
+	docker-compose up --build
 
 ## Start the backend service locally
 start-backend:
-	docker-compose --file services/docker-compose.yaml up --build backend
+	docker-compose up --build backend
 
 ## Start the frontend service locally
 start-frontend:
-	docker-compose --file services/docker-compose.yaml up --build frontend
+	docker-compose up --build frontend
 
 ## Destroy out all docker-compose services, networks, and volumes (to clear out dependencies)
 down:
-	docker-compose --file services/docker-compose.yaml down -v
+	docker-compose down -v
 
 #################################################################################
 # SELF DOCUMENTING COMMANDS
