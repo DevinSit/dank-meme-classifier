@@ -1,0 +1,19 @@
+{
+    "name": "keraspredictionsusbscriberfunction",
+    "version": "1.0.0",
+    "description": "A Cloud Function for proxying predictions to/from the Keras Prediction service.",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "NODE_PATH=src/ KERAS_PREDICTION_URL=http://localhost:5000/api/v1/memes/predictions nodemon src/testServer.js"
+    },
+    "author": "Devin Sit",
+    "dependencies": {
+        "@google-cloud/datastore": "^2.0.0",
+        "node-fetch": "^2.2.0"
+    },
+    "devDependencies": {
+        "body-parser": "^1.18.3",
+        "express": "^4.16.4",
+        "nodemon": "^1.18.4"
+    }
+}

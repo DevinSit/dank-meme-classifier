@@ -1,0 +1,5 @@
+cron:
+    - description: "hourly trigger"
+      url: /post-scraper
+      target:  dmc-post-scraper-scheduler
+      schedule: every 12 hours

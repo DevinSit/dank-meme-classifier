@@ -1,0 +1,31 @@
+@import "styles/_colors.scss";
+@import "styles/_dimens.scss";
+@import "styles/_media_queries.scss";
+
+html, body, #root, #app {
+    height: 100%;
+    width: 100%;
+}
+
+p, div, span {
+    color: $color-text-secondary;
+    font-family: "Open Sans", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: $color-text-primary;
+    font-family: "Titillium Web", sans-serif;
+}
+
+#app {
+    background-color: $color-background;
+    display: flex;
+    flex-direction: column;
+
+}
+
+#app-content {
+    height: 100%;
+    margin-top: $header-height * 1.5;
+    width: 100%;
+}

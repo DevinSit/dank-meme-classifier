@@ -1,0 +1,40 @@
+import React from "react";
+import ReactDropzone from "react-dropzone";
+import ImagePrediction from "components/ImagePrediction";
+
+const IndividualClassificationLayout = ({loading, file, kerasPrediction, autoMLPrediction, onImageDrop}) => (
+    <div className="individual-classification">
+        <div className="image-dropzone">
+            <ImageDropzone onDrop={onImageDrop} />
+        </div>
+
+        <div className="classification-results">
+            <div className="classification-image-container">
+                {
+                    file ? (
+                        <img className="classification-image" src={file} alt="preview" />
+                    ) : (
+                        <div className="classification-image-empty">Preview</div>
+                    )
+                }
+            </div>
+
+            <div className="classification-predictions">
+                <ImagePrediction prediction={kerasPrediction} predictionType="Keras" loading={loading} />
+                <ImagePrediction prediction={autoMLPrediction} predictionType="AutoML" loading={loading} />
+            </div>
+        </div>
+    </div>
+);
+
+const ImageDropzone = ({onDrop}) => (
+    <ReactDropzone
+        accept="image/jpeg, image/png"
+        onDrop={onDrop}
+        className="dropzone"
+    >
+        <div className="dropzone-text">Drop image (jpg, png) to upload</div>
+    </ReactDropzone>
+);
+
+export default IndividualClassificationLayout;

@@ -1,0 +1,2 @@
+ingestionPublisherFunction: make start-ingestion-publisher-function
+ingestionSubscriberFunction: make start-ingestion-subscriber-function

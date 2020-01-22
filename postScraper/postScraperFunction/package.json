@@ -1,0 +1,19 @@
+{
+    "name": "postscraperfunction",
+    "version": "1.0.0",
+    "description": "A Cloud Function for scraping posts from Reddit.",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "NODE_PATH=src/ nodemon src/testServer.js"
+    },
+    "author": "Devin Sit",
+    "dependencies": {
+        "gcf-runtime-config": "0.0.7",
+        "node-fetch": "^2.2.0",
+        "snoowrap": "^1.15.2"
+    },
+    "devDependencies": {
+        "express": "^4.16.4",
+        "nodemon": "^1.18.4"
+    }
+}

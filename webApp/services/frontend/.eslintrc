@@ -1,0 +1,95 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true,
+        "jest": true,
+        "node": true,
+        "commonjs": true
+    },
+    "extends": "eslint:recommended",
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true,
+            "jsx": true
+        },
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "settings": {
+        "react": {
+            "version": "16.2.0"
+        }
+    },
+    "rules": {
+        "strict": 0,
+        "indent": [
+            "error",
+            4,
+            {"SwitchCase": 1}
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "double"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "no-trailing-spaces": [
+            "error"
+        ],
+        "no-unused-vars": [
+            "error",
+            {"varsIgnorePattern": "([A-Z][a-zA-Z]*)"}
+        ],
+        "max-len": [
+            "error",
+            {"code": 120}
+        ],
+        "no-console": [
+            "off"
+        ],
+        "no-multiple-empty-lines": [
+            "error",
+            {"max": 1}
+        ],
+		"prefer-const": [
+			"error",
+			{"destructuring": "all"}
+		],
+		"no-var": [
+            "error"
+        ],
+        "react/jsx-boolean-value": ["error", "always"],
+        "react/jsx-closing-bracket-location": "error",
+        "react/jsx-curly-spacing": ["error", "never"],
+        "react/jsx-equals-spacing": ["error", "never"],
+        "react/jsx-indent": ["error", 4],
+        "react/jsx-indent-props": ["error", 4],
+        "react/jsx-key": "error",
+        "react/jsx-max-props-per-line": ["error", {"maximum": 3}],
+        "react/jsx-no-duplicate-props": ["error", {"ignoreCase": true}],
+        "react/jsx-no-target-blank": "error",
+        "react/jsx-no-undef": "error",
+        "react/jsx-pascal-case": "error",
+        "react/jsx-tag-spacing": ["error", {"beforeSelfClosing": "always"}],
+        "react/jsx-uses-vars": "error",
+        "react/no-danger": "error",
+        "react/no-deprecated": "error",
+        "react/no-direct-mutation-state": "error",
+        "react/no-children-prop": "error",
+        "react/no-is-mounted": "error",
+        "react/no-unescaped-entities": "error",
+        "react/prefer-es6-class": ["error", "always"],
+        "react/prefer-stateless-function": "error",
+        "react/require-render-return": "error",
+        "react/self-closing-comp": ["error", {"component": true, "html": false}]
+    }
+}

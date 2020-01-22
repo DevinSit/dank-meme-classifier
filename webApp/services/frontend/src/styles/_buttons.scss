@@ -1,0 +1,36 @@
+@import "styles/_colors.scss";
+@import "styles/_dimens.scss";
+@import "styles/_mixins.scss";
+
+@mixin positive-button() { 
+    @include card-shadow();
+    @include hover-background($color-button-positive);
+
+    align-self: flex-start;
+    border: none;
+    color: $color-light;
+    font-size: 12pt;
+    font-weight: bold;
+    outline: none;
+    padding: 7px 20px;
+}
+
+@mixin colored-in-button($background-color) {
+    @include hover-background($background-color);
+
+    background-color: $background-color;
+    border: none;
+    color: $color-light;
+    font-size: 16px;
+    outline: none;
+}
+
+@mixin border-button($border-color, $background-color) {
+    @include hover-border($border-color);
+
+    background-color: $background-color;
+    border: 2px solid $border-color;
+    color: $color-light;
+    font-size: 16px;
+    outline: none;
+}

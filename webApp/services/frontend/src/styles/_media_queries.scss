@@ -1,0 +1,22 @@
+$desktop-width: 1350px;
+$mobile-width: 767px;
+
+$laptop-height: 767px;
+
+@mixin mobile-width {
+    @media (max-width: #{$mobile-width}) {
+        @content
+    }
+}
+
+@mixin laptop-height {
+    @media (max-height: #{$laptop-height}) {
+        @content
+    }
+}
+
+@mixin desktop-width {
+    @media (max-width: #{$desktop-width}) {
+        @content
+    }
+}

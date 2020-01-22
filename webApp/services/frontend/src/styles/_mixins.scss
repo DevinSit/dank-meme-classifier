@@ -1,0 +1,38 @@
+@import "styles/_colors.scss";
+
+$default-transition-time: 0.1s;
+$default-percentage: 5%;
+
+@mixin hover-background($background-color, $percentage: $default-percentage, $color-function: "darken") {
+    background-color: $background-color;
+    cursor: pointer;
+    transition: background-color $default-transition-time;
+
+    &:hover, &:focus {
+        background-color: call(get-function($color-function), $background-color, $percentage);
+    }
+}
+
+@mixin hover-color($color, $percentage: $default-percentage, $color-function: "darken") {
+    color: $color;
+    cursor: pointer;
+    transition: color $default-transition-time;
+
+    &:hover, &:focus {
+        color: call(get-function($color-function), $color, $percentage);
+    }
+}
+
+@mixin hover-border($color, $percentage: $default-percentage, $color-function: "darken") {
+    border-color: $color;
+    cursor: pointer;
+    transition: border-color $default-transition-time;
+
+    &:hover, &:focus {
+        border-color: call(get-function($color-function), $color, $percentage);
+    }
+}
+
+@mixin card-shadow() {
+    box-shadow: 0 2px 57px 0 rgba(0, 0, 0, 0.5);
+}

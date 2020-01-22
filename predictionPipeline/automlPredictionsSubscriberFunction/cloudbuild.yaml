@@ -1,0 +1,5 @@
+steps:
+    - name: "gcr.io/cloud-builders/gcloud"
+      entrypoint: sh
+      args: ["-c", "sh ./scripts/deploy.sh"]
+      dir: "predictionPipeline/automlPredictionsSubscriberFunction"

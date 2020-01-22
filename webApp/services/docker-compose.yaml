@@ -1,0 +1,30 @@
+version: '2'
+
+services:
+    frontend:
+        build:
+            context: ./frontend
+            args: 
+                app_env: dev
+        image: frontend
+        ports:
+            - "3000:3000"
+        volumes:
+            - ./frontend:/frontend
+            - frontend-deps:/frontend/node_modules
+    backend:
+        build: ./backend
+        image: backend
+        ports:
+            - "5000:5000"
+        command: python src/main.py
+        volumes:
+            - ./backend/:/app
+            - ../models/:/var/model-storage
+            - ../:/gcp
+        environment:
+            - GOOGLE_APPLICATION_CREDENTIALS=/gcp/dank-meme-classifier-account.json
+            - FLASK_ENV=development
+
+volumes:
+    frontend-deps:

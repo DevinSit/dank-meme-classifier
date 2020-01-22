@@ -1,0 +1,43 @@
+@import "styles/_colors.scss";
+@import "styles/_dimens.scss";
+
+#header {
+    align-items: center;
+    background-color: $color-background;
+    display: flex;
+    flex-shrink: 0;
+    padding: 0 $default-spacing*2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: $header-height;
+    z-index: 10000;
+
+    .header-logo {
+        color: $color-primary;
+        flex: 1;
+    }
+
+    .header-empty {
+        flex: 1;
+    }
+}
+
+.header-navbar {
+    display: flex;
+
+    .navbar-tab {
+        color: $color-text-secondary;
+        cursor: pointer;
+        border-bottom: 2px solid $color-background;
+        font-size: $default-text-size;
+        margin: 0 $default-spacing;
+        padding-bottom: 2px;
+
+        &.navbar-tab--selected {
+            border-bottom-color: $color-primary;
+            color: $color-text-primary;
+        }
+    }
+}
