@@ -1,18 +1,16 @@
 import React from "react";
 import axios from "axios";
 import {BACKEND_URL} from "config";
-import {registerGAEvent} from "utils/UserTracking";
 import IndividualClassificationLayout from "./IndividualClassificationLayout";
-import "./IndividualClassification.css";
+import "./IndividualClassification.scss";
 
-const PREDICTION_POLLING = 1500;  // 1.5 seconds
+// const PREDICTION_POLLING = 1500;  // 1.5 seconds
 
 export default class IndividualClassification extends React.Component {
     state = {
         loading: false,
         file: "",
-        kerasPrediction: null,
-        autoMLPrediction: null
+        prediction: null
     }
 
     onImageDrop = async (files) => {
@@ -33,48 +31,25 @@ export default class IndividualClassification extends React.Component {
         const formData = new FormData();
         formData.append("file", file);
 
-        const response = await axios.post(`${BACKEND_URL}/api/v1/memes/image`, formData, {
+        const response = await axios.post(`${BACKEND_URL}/api/v1/memes/predictions/file`, formData, {
             header: {"Content-Type": "multipart/form-data"}
         });
 
-        const {imageHash} = response.data;
-        this.startPolling(imageHash);
+        const {prediction, status} = response.data;
 
-        registerGAEvent({
-            category: "Interaction",
-            action: "Uploaded an image for predictions",
-            label: imageHash
-        });
-    };
-
-    startPolling = (imageHash) => {
-        this.timer = setInterval(
-            () => this.getImagePredictions(imageHash),
-            PREDICTION_POLLING
-        );
-    };
-
-    getImagePredictions = async (imageHash) => {
-        const response = await axios.get(`${BACKEND_URL}/api/v1/memes/image/${imageHash}/predictions`);
-        const {data} = response;
-
-        if (data.status === "success") {
-            clearInterval(this.timer);
-
-            const {kerasPrediction, autoMLPrediction} = data.predictions;
-            this.setState({kerasPrediction, autoMLPrediction, loading: false});
+        if (status === "success") {
+            this.setState({prediction, loading: false});
         }
     };
 
     render() {
-        const {loading, file, kerasPrediction, autoMLPrediction} = this.state;
+        const {loading, file, prediction} = this.state;
 
         return (
             <IndividualClassificationLayout
                 loading={loading}
                 file={file}
-                kerasPrediction={kerasPrediction}
-                autoMLPrediction={autoMLPrediction}
+                prediction={prediction}
                 onImageDrop={this.onImageDrop}
             />
         );

@@ -2,7 +2,7 @@ import React from "react";
 import ReactDropzone from "react-dropzone";
 import ImagePrediction from "components/ImagePrediction";
 
-const IndividualClassificationLayout = ({loading, file, kerasPrediction, autoMLPrediction, onImageDrop}) => (
+const IndividualClassificationLayout = ({loading, file, prediction, onImageDrop}) => (
     <div className="individual-classification">
         <div className="image-dropzone">
             <ImageDropzone onDrop={onImageDrop} />
@@ -20,8 +20,7 @@ const IndividualClassificationLayout = ({loading, file, kerasPrediction, autoMLP
             </div>
 
             <div className="classification-predictions">
-                <ImagePrediction prediction={kerasPrediction} predictionType="Keras" loading={loading} />
-                <ImagePrediction prediction={autoMLPrediction} predictionType="AutoML" loading={loading} />
+                <ImagePrediction prediction={prediction} loading={loading} />
             </div>
         </div>
     </div>

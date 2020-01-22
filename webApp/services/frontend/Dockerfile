@@ -1,4 +1,4 @@
-FROM node:8.9.1-alpine
+FROM node:12.14.1-alpine
 
 ENV NPM_CONFIG_LOGLEVEL warn
 ARG app_env

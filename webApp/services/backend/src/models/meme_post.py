@@ -3,7 +3,7 @@ import os
 import logging
 from cachetools import cached, TTLCache
 from google.cloud import datastore, pubsub_v1, storage
-from typing import List, Tuple
+from typing import BinaryIO, List, Tuple
 from werkzeug.utils import secure_filename
 from config import IMAGE_SIZE, IMAGES_STORAGE_BUCKET, PREDICTIONS_TOPIC
 from utils.blockhash import hash_image
@@ -22,9 +22,11 @@ POST_SCORE_KIND = "RedditPostScore"
 
 class MemePost:
     def __init__(self):
-        self.datastore_client = datastore.Client()
-        self.publisher_client = pubsub_v1.PublisherClient()
-        self.storage_client = storage.Client()
+        # Disabled for demo purposes
+        # self.datastore_client = datastore.Client()
+        # self.publisher_client = pubsub_v1.PublisherClient()
+        # self.storage_client = storage.Client()
+        pass
 
     def get_latest_posts(self, number_of_posts=10):
         posts = self._fetch_latest_posts(number_of_posts)
@@ -44,7 +46,7 @@ class MemePost:
 
         return score_entity["score"]
 
-    def process_image(self, request_file):
+    def process_image(self, request_file: BinaryIO):
         destination = os.path.join("/tmp", secure_filename(request_file.filename))
         request_file.save(destination)
 

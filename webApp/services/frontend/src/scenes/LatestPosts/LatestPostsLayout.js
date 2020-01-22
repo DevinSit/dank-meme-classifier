@@ -120,12 +120,12 @@ const PostCreationInfo = ({author, createdUtc}) => (
 );
 
 const ScoreBubble = ({score, notFilled = false, onClick}) => (
-    <a
+    <button
         className={classNames("score-bubble", {"score-bubble--not-filled": notFilled})}
         onClick={onClick}
     >
         +{score}
-    </a>
+    </button>
 );
 
 const getCreatedTimeAgo = (createdUtc) => {

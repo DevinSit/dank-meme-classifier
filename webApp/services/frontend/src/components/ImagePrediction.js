@@ -1,9 +1,9 @@
 import React from "react";
 import classNames from "classnames";
 import Spinner from "images/loading.gif";
-import "./ImagePrediction.css";
+import "./ImagePrediction.scss";
 
-const ImagePrediction = ({prediction, predictionType, loading}) => {
+const ImagePrediction = ({prediction = 0.0, predictionType = "", loading = false}) => {
     const normalizedPrediction = Math.round(prediction * 100);
     const isDank = normalizedPrediction >= 50;
 
@@ -22,9 +22,9 @@ const ImagePrediction = ({prediction, predictionType, loading}) => {
                         <p className={classNames("post-prediction", {"post-prediction--dank": isDank})}>
                             {
                                 isDank ? (
-                                    `Dank (${normalizedPrediction}%)`
+                                    `Dank (${normalizedPrediction}% likely)`
                                 ) : (
-                                    `Not Dank (${normalizedPrediction}%)`
+                                    `Not Dank (${normalizedPrediction}% likely)`
                                 )
                             }
                         </p>

@@ -1,9 +1,8 @@
 import React from "react";
 import axios from "axios";
 import {BACKEND_URL} from "config";
-import {registerGAEvent} from "utils/UserTracking";
 import LatestPostsLayout from "./LatestPostsLayout";
-import "./LatestPosts.css";
+import "./LatestPosts.scss";
 
 const SCORED_POSTS_KEY = "scoredPosts";
 
@@ -23,12 +22,6 @@ export default class LatestPosts extends React.Component {
 
     onPostCardClick = (index) => () => {
         this.setState({selectedPostIndex: index});
-
-        registerGAEvent({
-            category: "Interaction",
-            action: "Clicked on a post",
-            label: index
-        });
     }
 
     onScoreClick = (id) => async () => {
@@ -41,12 +34,6 @@ export default class LatestPosts extends React.Component {
 
             localStorage.setItem(SCORED_POSTS_KEY, JSON.stringify(updatedScoredPosts));
             this.props.onScoreUpdate(id, response.data.updated_score);
-
-            registerGAEvent({
-                category: "Interaction",
-                action: "Clicked score button",
-                label: id
-            });
         }
     }
 

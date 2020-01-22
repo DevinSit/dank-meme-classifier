@@ -28,9 +28,11 @@
     display: flex;
 
     .navbar-tab {
+        background: none;
+        border: none;
+        border-bottom: 2px solid $color-background;
         color: $color-text-secondary;
         cursor: pointer;
-        border-bottom: 2px solid $color-background;
         font-size: $default-text-size;
         margin: 0 $default-spacing;
         padding-bottom: 2px;

@@ -16,6 +16,10 @@ start-backend:
 start-frontend:
 	docker-compose --file services/docker-compose.yaml up --build frontend
 
+## Destroy out all docker-compose services, networks, and volumes (to clear out dependencies)
+down:
+	docker-compose --file services/docker-compose.yaml down -v
+
 #################################################################################
 # SELF DOCUMENTING COMMANDS
 #################################################################################

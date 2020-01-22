@@ -22,10 +22,7 @@ if (window.BACKEND_PORT !== "80" && window.BACKEND_PORT !== "443") {
 // whether or not we're running in production or development
 const IS_PRODUCTION = !BACKEND_URL.includes("localhost");
 
-const GOOGLE_ANALYTICS_TRACKING_CODE = "UA-129597474-1";
-
 export {
     BACKEND_URL,
-    GOOGLE_ANALYTICS_TRACKING_CODE,
     IS_PRODUCTION
 };

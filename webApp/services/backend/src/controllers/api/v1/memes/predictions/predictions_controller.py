@@ -32,6 +32,23 @@ def get_predictions() -> Response:
     })
 
 
+@predictions_controller.route("{}/file".format(URL_PREFIX), methods=["POST"])
+@LoggingUtils.log_execution_time("Direct file prediction processing finished")
+def get_file_prediction() -> Response:
+    if "file" not in request.files:
+        return jsonify({
+            "status": "error",
+            "message": "'file' is not present in the given files."
+        }), 400
+
+    prediction = keras_prediction.get_file_prediction(request.files["file"])
+
+    return jsonify({
+        "status": "success",
+        "prediction": prediction
+    })
+
+
 @predictions_controller.errorhandler(Exception)
 def error(exception):
     logging.exception("An error occurred during a request.")

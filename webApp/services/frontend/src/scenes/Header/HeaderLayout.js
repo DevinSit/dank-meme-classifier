@@ -12,17 +12,7 @@ const HeaderLayout = ({selected, onTabClick}) => (
 
 const Navbar = ({selected, onTabClick}) => (
     <nav className="header-navbar">
-        <a
-            className={classNames(
-                "navbar-tab",
-                {"navbar-tab--selected": selected === Routes.LATEST_POSTS}
-            )}
-            onClick={onTabClick(Routes.LATEST_POSTS)}
-        >
-            Latest from r/dankmemes
-        </a>
-
-        <a
+        <button
             className={classNames(
                 "navbar-tab",
                 {"navbar-tab--selected": selected === Routes.INDIVIDUAL_CLASSIFICATION}
@@ -30,7 +20,17 @@ const Navbar = ({selected, onTabClick}) => (
             onClick={onTabClick(Routes.INDIVIDUAL_CLASSIFICATION)}
         >
             Classify your own
-        </a>
+        </button>
+
+        <button
+            className={classNames(
+                "navbar-tab",
+                {"navbar-tab--selected": selected === Routes.LATEST_POSTS}
+            )}
+            onClick={onTabClick(Routes.LATEST_POSTS)}
+        >
+            Latest from r/dankmemes
+        </button>
     </nav>
 );
 
