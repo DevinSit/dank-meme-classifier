@@ -1,0 +1,25 @@
+steps:
+    - id: "Build backend image"
+      name: "gcr.io/cloud-builders/docker"
+      args: ["build", "-t", "gcr.io/$PROJECT_ID/dankmemeclassifier-backend:$COMMIT_SHA", "./backend"]
+
+    - id: "Push backend image"
+      name: "gcr.io/cloud-builders/docker"
+      args: ["push", "gcr.io/$PROJECT_ID/dankmemeclassifier-backend:$COMMIT_SHA"]
+
+    - id: "Deploy backend"
+      name: "gcr.io/cloud-builders/gcloud"
+      args: 
+        - "run"
+        - "deploy"
+        - "dankmemeclassifier-backend"
+        - "--image"
+        - "gcr.io/$PROJECT_ID/dankmemeclassifier-backend:$COMMIT_SHA"
+        - "--region"
+        - "us-east1"
+        - "--platform"
+        - "managed"
+        - "--allow-unauthenticated"
+
+timeout: 1800s
+images: ["gcr.io/$PROJECT_ID/dankmemeclassifier-backend:$COMMIT_SHA"]

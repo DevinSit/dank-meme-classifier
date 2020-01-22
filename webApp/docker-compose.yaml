@@ -20,8 +20,8 @@ services:
         command: python src/main.py
         volumes:
             - ./backend/:/app
-            - ../models/:/var/model-storage
-            - ../:/gcp
+            - ./models/:/var/model-storage
+            - ./:/gcp
         environment:
             - GOOGLE_APPLICATION_CREDENTIALS=/gcp/dank-meme-classifier-account.json
             - FLASK_ENV=development
