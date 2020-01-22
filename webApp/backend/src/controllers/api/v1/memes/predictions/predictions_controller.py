@@ -14,22 +14,24 @@ KerasPrediction.init()
 keras_prediction = KerasPrediction()
 
 
-@predictions_controller.route(URL_PREFIX, methods=["POST"])
-@LoggingUtils.log_execution_time("Prediction processing finished")
-def get_predictions() -> Response:
-    data = request.get_json()
-    logger.info("Request data: " + str(data))
-
-    if "posts" not in data:
-        logger.warning("Posts are missing from payload.")
-        return jsonify(abort(400))
-
-    predictions = list(map(lambda post: keras_prediction.get_prediction(post["imageHash"]), data["posts"]))
-
-    return jsonify({
-        "status": "success",
-        "predictions": predictions
-    })
+# DEMO: Disabled for demo purposes
+#
+# @predictions_controller.route(URL_PREFIX, methods=["POST"])
+# @LoggingUtils.log_execution_time("Prediction processing finished")
+# def get_predictions() -> Response:
+#     data = request.get_json()
+#     logger.info("Request data: " + str(data))
+#
+#     if "posts" not in data:
+#         logger.warning("Posts are missing from payload.")
+#         return jsonify(abort(400))
+#
+#     predictions = list(map(lambda post: keras_prediction.get_prediction(post["imageHash"]), data["posts"]))
+#
+#     return jsonify({
+#         "status": "success",
+#         "predictions": predictions
+#     })
 
 
 @predictions_controller.route("{}/file".format(URL_PREFIX), methods=["POST"])
