@@ -20,6 +20,8 @@ steps:
         - "--platform"
         - "managed"
         - "--allow-unauthenticated"
+        - "--memory"
+        - "2G"  # Need more memory to be able to handle loading the ML model/images into memory (2GB is the max) 
 
 timeout: 1800s
 images: ["gcr.io/$PROJECT_ID/dankmemeclassifier-backend:$COMMIT_SHA"]
