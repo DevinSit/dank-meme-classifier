@@ -2,10 +2,12 @@ steps:
     - id: "Build frontend image"
       name: "gcr.io/cloud-builders/docker"
       args: ["build", "-t", "gcr.io/$PROJECT_ID/dankmemeclassifier-frontend:$COMMIT_SHA", "./frontend"]
+      dir: "webApp"
 
     - id: "Push frontend image"
       name: "gcr.io/cloud-builders/docker"
       args: ["push", "gcr.io/$PROJECT_ID/dankmemeclassifier-frontend:$COMMIT_SHA"]
+      dir: "webApp"
 
     - id: "Deploy frontend"
       name: "gcr.io/cloud-builders/gcloud"
@@ -22,6 +24,7 @@ steps:
         - "--allow-unauthenticated"
         - "--set-env-vars"
         - "BACKEND_HOST=${_BACKEND_HOST},BACKEND_PORT=443,BACKEND_PROTOCOL=https"
+      dir: "webApp"
 
 substitutions:
     _BACKEND_HOST: ""
