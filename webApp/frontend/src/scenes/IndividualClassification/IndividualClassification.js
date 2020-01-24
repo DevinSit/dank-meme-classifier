@@ -4,8 +4,7 @@ import {BACKEND_URL} from "config";
 import IndividualClassificationLayout from "./IndividualClassificationLayout";
 import "./IndividualClassification.scss";
 
-// const PREDICTION_POLLING = 1500;  // 1.5 seconds
-
+/* The scene component that is shown under the 'Classify your own' tab. */
 export default class IndividualClassification extends React.Component {
     state = {
         loading: false,
@@ -20,14 +19,17 @@ export default class IndividualClassification extends React.Component {
 
         this.setState({loading: true});
 
+        // Read in the image file
         const reader = new FileReader();
         const file = files[0];
         reader.readAsDataURL(file);
 
+        // Once the file is loaded, add it to state so that it can be shown in the preview.
         reader.onloadend = () => {
             this.setState({file: reader.result});
         };
 
+        // Prepare the file to be sent to the backend
         const formData = new FormData();
         formData.append("file", file);
 
@@ -37,6 +39,7 @@ export default class IndividualClassification extends React.Component {
 
         const {prediction, status} = response.data;
 
+        // Time to show the user the prediction
         if (status === "success") {
             this.setState({prediction, loading: false});
         }
