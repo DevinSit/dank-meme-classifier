@@ -1,4 +1,4 @@
-// DEMO: Commented out code are things that are disabled for demo purposes
+// DEMO: Commented-out code are things that are disabled for demo purposes.
 
 import React from "react";
 // import axios from "axios";
