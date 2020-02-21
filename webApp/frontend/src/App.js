@@ -56,7 +56,7 @@ export default class App extends React.Component {
             //
 
             renderedSection = (
-                <div className="disabled-latest-posts">Not enabled for demo purposes</div>
+                <div className="disabled-latest-posts">Not enabled for demo purposes.</div>
             );
         } else if (selectedHeaderTab === Routes.INDIVIDUAL_CLASSIFICATION) {
             renderedSection = <IndividualClassification />;
