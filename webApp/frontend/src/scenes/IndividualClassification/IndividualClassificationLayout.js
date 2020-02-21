@@ -32,7 +32,7 @@ const ImageDropzone = ({onDrop}) => (
         onDrop={onDrop}
         className="dropzone"
     >
-        <div className="dropzone-text">Drop image (jpg, png) to upload</div>
+        <div className="dropzone-text">Drop a meme (jpg, png) to classify</div>
     </ReactDropzone>
 );
 
